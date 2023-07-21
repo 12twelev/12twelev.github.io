@@ -1,0 +1,14 @@
+{
+    "1.jpg": {
+        "path": "/Users/li/Desktop/LocalAreaNetworkServer/html/ShareDir/1.jpg",
+        "type": "file"
+    },
+    "工作簿1.xlsx": {
+        "path": "/Users/li/Desktop/LocalAreaNetworkServer/html/ShareDir/工作簿1.xlsx",
+        "type": "file"
+    },
+    "2.doc": {
+        "path": "/ShareDir/2.doc",
+        "type": "file"
+    }
+}

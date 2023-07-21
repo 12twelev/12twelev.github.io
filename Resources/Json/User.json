@@ -1,0 +1,22 @@
+{
+  "Users": {
+    "example": {
+      "UserName": null,
+      "Password": null,
+      "UserHeadImage": null,
+      "identity": null,
+      "sets": {
+        "musicplayer": false
+      }
+    },
+    "114514": {
+      "UserName": "li",
+      "Password": "123456",
+      "UserHeadImage": "./Resources/image/senku_2.png",
+      "identity": "Admin",
+      "sets": {
+        "musicplayer": false
+      }
+    }
+  }
+}

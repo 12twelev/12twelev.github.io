@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SETTING</title>
+</head>
+<script>
+    let userno = localStorage.getItem("UserNo");
+</script>
+<body style="display: flex; width: 100%; height: 100%">
+<div style="width: auto; height: auto; position:absolute; top: 0; left: 0; right: 0; margin: auto; padding: 1px; background: rgba(0,0,0,0.75); display: flex;">
+    <div style="width: 130px; height: auto; display: flex; margin: 0;">
+    <a href="index.html" style="text-decoration: none; color: rgba(162,255,233,0.99); font-size: 45px; font-family: 'Academy Engraved LET',fantasy; position: relative; left: 1%; top: 10px; text-shadow: 1px 1px 2px black; margin: unset;"><i>LANS</i></a>
+</div>
+    <!-- 占位分层 -->
+    <div style="width: 40%; height: auto;"></div>
+    <div id="time-display" style="position: relative; height: 60px; width: 80px; left: 0; top: 0; display: flex;"></div>
+</div>
+<div id="SETS" style="position: absolute; width: 100%; height: auto; padding: 1px; top: 60px;">
+    <h2>Setting</h2>
+    <form method="post" name="SET" id="FORM">
+    </form>
+</div>
+</body>
+<script src="Resources/JS/TimeDisplay.js"></script>
+<script>
+    fetch("Resources/Json/User.json")
+            .then((response) => response.json())
+            .then(function(json){
+                
+                let userinfo = json["Users"][userno];
+                let users_sets = userinfo["sets"];
+                console.log(users_sets);
+                
+                let sets = document.getElementById("FORM");
+                for(let set in users_sets){
+                     let chose = document.createElement("span");
+                     chose.innerHTML = set;
+                     let input = document.createElement("input");
+                     input.name = set;
+                     switch (typeof users_sets[set]){
+                         case 'boolean':
+                             input = document.createElement("select");
+                             input.name = set;
+                             if(users_sets[set]) input.innerHTML = "<option name='on' value='true'>ON</option><option name='off' value='false'>OFF</option>";
+                             else input.innerHTML = "<option name='off' value='false'>OFF</option><option name='on' value='true'>ON</option>";
+                             break;
+                         case 'string':
+                             switch (users_sets[set]){
+                                 case "True":
+                                     input = document.createElement("select");
+                                     input.name = set;
+                                     input.innerHTML = "<option name='on' value='true'>ON</option><option name='off' value='false'>OFF</option>"
+                                     break
+                                 case "False":
+                                     input = document.createElement("select");
+                                     input.name = set;
+                                     input.innerHTML = "<option name='off' value='false'>OFF</option><option name='on' value='true'>ON</option>"
+                                     break
+                                 default:
+                                     input.type = "text";
+                                     break;
+                             }
+                             break
+                         case 'number':
+                             input.type = "number";
+                             break;
+                     }
+                     sets.appendChild(input);
+                     sets.appendChild(chose);
+                     sets.appendChild(document.createElement('br'));
+                }
+                sets.appendChild(document.createElement('br'));
+    
+                let submit2 = document.createElement("input");
+                submit2.type = "text";
+                submit2.name = "userno";
+                submit2.hidden = true;
+    
+                // todo KEEP THE VALUE AND THE PAGE'S TITLE IS THE SAME
+                submit2.value = userno;
+    
+                submit2.formMethod = "post";
+                sets.appendChild(submit2);
+                
+                // SUBMIT
+                let submit = document.createElement("button");
+                submit.type = "submit";
+                submit.name = "pages";
+                
+                // todo KEEP THE VALUE AND THE PAGE'S TITLE IS THE SAME
+                submit.value = "UserSetting"
+                
+                submit.formMethod = "post";
+                submit.innerHTML = "SUBMIT";
+                sets.appendChild(submit);
+                
+            })
+</script>
+</html>

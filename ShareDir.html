@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShareDir</title>
+    <style>
+        .div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 740px;
+            position: absolute;
+            width: 99%;
+            top: 60px;
+        }
+
+        .main{
+            height: auto;
+            width: auto;
+            padding: 10px;
+            position:absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body style="width: 100%; height: 100%; display: flex">
+<div style="width: auto; height: auto; position:absolute; top: 0; left: 0; right: 0; margin: auto; padding: 1px; background: rgba(0,0,0,0.75); display: flex;">
+    <div style="width: 130px; height: auto; display: flex; margin: 0;">
+        <a href="index.html" style="text-decoration: none; color: rgba(162,255,233,0.99); font-size: 45px; font-family: 'Academy Engraved LET',fantasy; position: relative; left: 1%; top: 10px; text-shadow: 1px 1px 2px black; margin: unset;"><i>LANS</i></a>
+    </div>
+    <!-- 占位分层 -->
+    <div style="width: 38%; height: auto;"></div>
+    <div id="time-display" style="position: relative; height: 60px; width: 80px; left: 0; top: 0; display: flex;"></div>
+</div>
+<div class="div">
+    <div class="main" id="main">
+        <div id="index" style="display: flex; position: relative; top: 0; left: 0; width: 100%; height: 20px;">
+    
+        </div>
+        <div id="content" style="; position: relative; top: 20px; left: 0; width: 100%; height: auto;">
+    
+        </div>
+    </div>
+</div>
+</body>
+<script src="Resources/JS/TimeDisplay.js"></script>
+<script src="Resources/JS/ShareDir.js"></script>
+</html>

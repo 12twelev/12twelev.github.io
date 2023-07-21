@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <style>
+        body{
+            background: rgba(162,255,233,0.45);
+            display:flex;
+            width: auto;
+            height: auto;
+            line-height:100px;
+        }
+        
+        .div1{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+        }
+        
+        .div2{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            padding: 5px;
+            background: rgba(255,255,255,0.99);
+            height: 550px;
+            width: 400px;
+            border-radius: 7px;
+            box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.75);
+        }
+        
+        .input_{
+            border: none;
+            border-bottom: 1px solid #000000;
+            border-radius: 5px;
+            width: 200px;
+            height: 30px;
+        }
+    </style>
+    <script src="Resources/JS/Login.js"></script>
+</head>
+<body>
+<div style="width: auto; height: 40px; position:absolute; left: 0; right: 0; margin: auto">
+    <div>
+        <a href="index.html" style="text-decoration: none; color: rgba(0,0,0,0.99); font-size: 45px; font-family: 'Academy Engraved LET',fantasy; position: absolute; left: 1%;"><i>LANS</i></a>
+    </div>
+</div>
+<div class="div1">
+    <div class="div2">
+        <div style="height: 50px; text-align: center;">
+            <h3 style="text-underline: lightblue; color: rgba(160,211,255,0.99)">Log in</h3>
+        </div>
+        <div style="flex: auto; height: 300px;padding: 10px;">
+            <form method="post" style="width: 400px; height: 50px;font-size: 16px;" id="login" name="login">
+                <label style="">_UserNo_:
+                    <input class="input_" id="Post_UserName" type="text" name="UserName" autocomplete="off">
+                </label>
+                <p>
+                <label>Password:
+                    <input class="input_" id="Post_Password" type="password" name="Password" autocomplete="off">
+                </label>
+                <p>
+                <div style="text-align: center">
+                    <button type="button" style="font-size: 15px; width: 100px; height: 40px; border: none; border-radius: 10px; background: aliceblue" onclick="check_user()">
+                        Login
+                    </button>
+                </div>
+                <div style="text-align: center" id="toSign">
+                    <a href="Signin.html" style="font-size: small; color: rgba(92,162,255,0.99); text-decoration: none;">Sign in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

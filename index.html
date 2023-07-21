@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LANS-Local Area Network Server</title>
+    <style>
+        body{
+            background-image: url("/Resources/image/HomePageBackground.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+        }
+        
+        .div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 740px;
+            position: absolute;
+            width: 99%;
+            top: 60px;
+        }
+        
+        .main{
+            height: auto;
+            width: auto;
+            padding: 10px;
+            position:absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+    <script>
+        function a(json){
+            sets = json["Users"][info_userno]["sets"];
+            musicplayer = sets["musicplayer"];
+            if(musicplayer) create_musicplayer();
+        }
+    </script>
+    <script>
+        let is_login = false;
+        let User_json_path = String("Resources/Json/User.json");
+        
+        let sets, musicplayer;
+        let info_username = localStorage.getItem("UserName");
+        let info_userno = localStorage.getItem("UserNo");
+        let info_userheadimage = localStorage.getItem("UserHeadImage");
+        
+        if((info_username != null) || (info_userno != null) || (info_userheadimage != null)){
+            is_login = true;
+            fetch(User_json_path)
+                    .then((response) => response.json())
+                    .then((json) => a(json));
+        }
+    </script>
+    <script src="Resources/JS/create_musicplayer.js"></script>
+</head>
+<body>
+<div style="width: auto; height: auto; display: flex">
+    <div style="width: auto; height: auto; position:absolute; top: 0; left: 0; right: 0; margin: auto; padding: 1px; background: rgba(0,0,0,0.75); display: flex;">
+        <div style="width: 130px; height: auto; display: flex; margin: 0;">
+            <a href="index.html" style="text-decoration: none; color: rgba(162,255,233,0.99); font-size: 45px; font-family: 'Academy Engraved LET',fantasy; position: relative; left: 1%; top: 10px; text-shadow: 1px 1px 2px black; margin: unset;"><i>LANS</i></a>
+        </div>
+        <!-- 占位分层 -->
+        <div style="width: 40%; height: auto;"></div>
+        <div id="time-display" style="position: relative; height: 60px; width: 80px; left: 0; top: 0; display: flex;"></div>
+        <!-- 占位分层 -->
+        <div style="width: 40%; height: auto;">
+            <div id="ShareDir" style="width: fit-content; height: auto; margin: unset; position:relative; top: 30%; left: 80%;">
+                <a href="ShareDir.html" style="text-decoration: none; color: rgba(255, 255, 255, 0.99);">ShareDir</a>
+            </div>
+        </div>
+        <div id="login_div" style="position: relative; top: 15px; width: auto; height: auto; display: flex;">
+            <a id="login_a" href="login.html" style=" text-align: center; background: lightblue; border-radius: 4px; width: 45px; height: 20px; font-size: small; text-decoration: none; color: black; position: relative; right: 3%; top: 10%">Login</a>
+        </div>
+    </div>
+    <div class="div">
+        <div class="main" id="main">
+            <div id="WEB-NAME" style="position: relative; top: 40%;">
+                <h1 style="color: rgba(162,255,233,0.99); text-shadow: 6px 6px 5px black">LANS</h1>
+                <p></p>
+                <h3 style="color: rgba(162,255,233,0.99); text-decoration: underline; text-shadow: 10px 10px 5px black;">Local Area Network Server</h3>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function ToSet(){
+        location.href="UserSetting.html"
+        localStorage.setItem("UserNo", info_userno)
+    }
+    
+    if(is_login){
+        
+        let login_div = document.getElementById("login_div");
+        let login_a = document.getElementById("login_a");
+        
+        login_a.setAttribute("hidden", "hidden");
+        login_div.setAttribute("id", "users");
+        
+        let headimage = document.createElement("img");
+        let user_info = document.createElement("div");
+        let username = document.createElement("span");
+        
+        login_div.appendChild(user_info);
+        user_info.appendChild(headimage);
+        
+        user_info.appendChild(username);
+    
+        login_div.setAttribute("style", "width: 70px; height: 20px; float: right; padding: 2px; background: lightblue; border-radius: 11px; position: relative; right: 10px; top: 15px;")
+        user_info.id = "userinfo";
+        user_info.setAttribute("style", "display: flex")
+        headimage.src = info_userheadimage;
+        headimage.setAttribute("style","border-radius: 10px; border-color: black; width: 20px; height: 20px; position: relative; left: 0; top: 0;");
+        username.innerHTML = "<button style='background: none; border: none' id=\"user-info-button\" onclick='ToSet()' '>"+info_username+"</button>";
+        username.setAttribute("style", "font-size: 15px; position:relative; text-align: center; width: 50%;");
+        
+        let web_name = document.getElementById("WEB-NAME");
+        web_name.hidden = true;
+    }
+</script>
+<script src="Resources/JS/TimeDisplay.js"></script>
+</html>

@@ -1,0 +1,12 @@
+{
+  "1": {
+    "name": "海声",
+    "audio_path": "/Resources/audio/1.m4a",
+    "image_path": "/Resources/audio/image/1.jpeg"
+  },
+  "2": {
+    "name": "风止了",
+    "audio_path": "/Resources/audio/wind_stopped.mp3",
+    "image_path": null
+  }
+}
